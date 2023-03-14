@@ -2,7 +2,7 @@
 {
     public class Calculation
     {
-        public static int GetQuantityForProduct(int productType, int materialType, 
+        public static long GetQuantityForProduct(int productType, int materialType, 
                                          int count, float width, float length)
         {
             if (count <= 0 || width <= 0 || length <= 0) return -1;
@@ -37,7 +37,8 @@
             }
 
             double required = (width * length) * count * coefficient / (1 - percentage);
-            return (int)Math.Ceiling(required);
+            if (long.MaxValue < required) return -1;
+            return (long)Math.Ceiling(required);
         }
     }
 }
