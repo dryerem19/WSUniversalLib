@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Reflection;
 using Xunit.Sdk;
 
 namespace WSUniversalLib.Tests
@@ -36,12 +37,19 @@ namespace WSUniversalLib.Tests
         }
 
         [TestMethod()]
+        public void TestGetQuantityForProductNegativeCheck()
+        {
+            long result = Calculation.GetQuantityForProduct(1, 3, 7, 5.2f, 10.4f);
+            Assert.AreEqual(-1, result);
+        }
+
+
+        [TestMethod()]
         public void TestGetQuantityForProductPositiveCheck2()
         {
             long result = Calculation.GetQuantityForProduct(1, 1, 10, 5.5f, 7.2f);
             Assert.AreEqual(437, result);
         }
-
 
 
         [TestMethod()]
